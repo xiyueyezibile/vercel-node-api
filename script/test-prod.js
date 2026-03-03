@@ -25,15 +25,15 @@ async function testEndpoint(endpoint) {
     console.log(`✅ 状态码: ${response.status} ${response.statusText}`);
     console.log(`⏱️ 耗时: ${duration}ms`);
 
-    // const contentType = response.headers.get('content-type');
-    // if (contentType && contentType.includes('application/json')) {
-    //   const data = await response.json();
-    //   console.log('📦 响应数据:');
-    //   console.dir(data, { depth: null, colors: true });
-    // } else {
-    //   const text = await response.text();
-    //   console.log('📄 响应文本:', text);
-    // }
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const data = await response.json();
+      console.log('📦 响应数据:');
+      console.dir(data, { depth: null, colors: true });
+    } else {
+      const text = await response.text();
+      console.log('📄 响应文本:', text);
+    }
 
   } catch (error) {
     console.error(`❌ 请求失败: ${error.message}`);
